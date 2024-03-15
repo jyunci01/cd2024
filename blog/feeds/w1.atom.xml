@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>41123105協同產品設計實習 - w1</title><link href="./" rel="alternate"></link><link href="./feeds/w1.atom.xml" rel="self"></link><id>./</id><updated>2024-03-11T10:30:02+08:00</updated><entry><title>w1</title><link href="./2024-Spring-w1.html" rel="alternate"></link><published>2024-02-23T16:00:00+08:00</published><updated>2024-03-01T08:37:03+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-02-23:./2024-Spring-w1.html</id><summary type="html">&lt;p&gt;w1課程&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>41123105協同產品設計實習 - w1</title><link href="./" rel="alternate"></link><link href="./feeds/w1.atom.xml" rel="self"></link><id>./</id><updated>2024-03-15T09:23:49+08:00</updated><entry><title>w1</title><link href="./2024-Spring-w1.html" rel="alternate"></link><published>2024-02-23T16:00:00+08:00</published><updated>2024-03-01T08:37:03+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-02-23:./2024-Spring-w1.html</id><summary type="html">&lt;p&gt;w1課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;w1課程&lt;/p&gt;
 
 
@@ -280,8 +280,15 @@ doc["threejsblock"].bind("click", threejsblock.do)
 
 
 &lt;h1&gt;加入小組&lt;/h1&gt;
-&lt;p&gt;第二組https://github.com/mdecd2024/2a-midag2&lt;/p&gt;</content><category term="w1"></category><category term="網誌編寫"></category></entry><entry><title>w3</title><link href="./2024-Spring-w3.html" rel="alternate"></link><published>2024-02-23T16:00:00+08:00</published><updated>2024-03-11T10:30:02+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-02-23:./2024-Spring-w3.html</id><summary type="html">&lt;p&gt;w3課程&lt;/p&gt;
+&lt;p&gt;第二組https://github.com/mdecd2024/2a-midag2&lt;/p&gt;</content><category term="w1"></category><category term="網誌編寫"></category></entry><entry><title>w3</title><link href="./2024-Spring-w3.html" rel="alternate"></link><published>2024-02-23T16:00:00+08:00</published><updated>2024-03-15T09:00:44+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-02-23:./2024-Spring-w3.html</id><summary type="html">&lt;p&gt;w3課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;w3課程&lt;/p&gt;
 
 
-&lt;h1&gt;將個人倉儲納入分組倉儲的子模組&lt;/h1&gt;</content><category term="w1"></category><category term="網誌編寫"></category></entry></feed>
+&lt;h1&gt;將個人倉儲納入分組倉儲的子模組&lt;/h1&gt;
+&lt;h1&gt;翻譯https://webthesis.biblio.polito.it/16429/1/tesi.pdf&lt;/h1&gt;</content><category term="w1"></category><category term="網誌編寫"></category></entry><entry><title>w4</title><link href="./2024-Spring-w4.html" rel="alternate"></link><published>2024-02-23T16:00:00+08:00</published><updated>2024-03-15T09:23:49+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-02-23:./2024-Spring-w4.html</id><summary type="html">&lt;p&gt;w4課程&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;w4課程&lt;/p&gt;
+
+
+&lt;h1&gt;將之前入製的影片加入文字&lt;/h1&gt;
+&lt;p&gt;影片名稱:cd2024_2a_w3_如何將學員倉儲設為分組倉儲的子模組 &lt;/p&gt;
+&lt;iframe src="https://nfuedu-my.sharepoint.com/personal/41123105_nfu_edu_tw/_layouts/15/embed.aspx?UniqueId=d67ab705-7850-436d-be45-a27c7c51e4c4&amp;embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&amp;referrer=StreamWebApp&amp;referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="cd2024_2a_w3_如何將學員倉儲設為分組倉儲的子模組 (1) 1.mp4"&gt;&lt;/iframe&gt;</content><category term="w1"></category><category term="網誌編寫"></category></entry></feed>
