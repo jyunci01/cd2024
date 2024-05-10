@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>41123105協同產品設計實習</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2024-05-03T16:00:00+08:00</updated><entry><title>w11</title><link href="./41123105_2024-Spring-w11.html" rel="alternate"></link><published>2024-05-03T16:00:00+08:00</published><updated>2024-05-03T08:40:58+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-05-03:./41123105_2024-Spring-w11.html</id><summary type="html">&lt;p&gt;w11課程&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>41123105協同產品設計實習</title><link href="./" rel="alternate"></link><link href="./feeds/all.atom.xml" rel="self"></link><id>./</id><updated>2024-05-10T05:34:18+08:00</updated><entry><title>w11</title><link href="./41123105_2024-Spring-w11.html" rel="alternate"></link><published>2024-05-03T16:00:00+08:00</published><updated>2024-05-03T08:40:58+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-05-03:./41123105_2024-Spring-w11.html</id><summary type="html">&lt;p&gt;w11課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;w11課程&lt;/p&gt;
 
 
 &lt;p&gt;將個人心得打入2a cd2024 評分網站
-&lt;a href="https://mdecd2024.github.io/2astud-2asite/content/g2.html"&gt;2a cd2024 評分網站&lt;/a&gt;&lt;/p&gt;</content><category term="w11"></category><category term="網誌編寫"></category></entry><entry><title>w10</title><link href="./41123105_2024-Spring-w10.html" rel="alternate"></link><published>2024-04-26T16:00:00+08:00</published><updated>2024-05-03T06:36:36+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-04-26:./41123105_2024-Spring-w10.html</id><summary type="html">&lt;p&gt;w10課程&lt;/p&gt;
+&lt;a href="https://mdecd2024.github.io/2astud-2asite/content/g2.html"&gt;2a cd2024 評分網站&lt;/a&gt;&lt;/p&gt;</content><category term="w11"></category><category term="網誌編寫"></category></entry><entry><title>w10</title><link href="./41123105_2024-Spring-w10.html" rel="alternate"></link><published>2024-04-26T16:00:00+08:00</published><updated>2024-05-10T05:30:23+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-04-26:./41123105_2024-Spring-w10.html</id><summary type="html">&lt;p&gt;w10課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;w10課程&lt;/p&gt;
 
 
 &lt;p&gt;(任務一)列出個學員的資訊&lt;/p&gt;
 &lt;iframe src="https://1drv.ms/t/c/9a62b67559925288/IQOHHVTRwRoHR5SsataPTnSOAToKM19NV2KAroSHj-aaDqg" width="640" height="360" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;
-&lt;p&gt;(任務二)
-任務二(各篇論文要點摘要)
-文章一  : Construction and theoretical study of a ball balancing platform (構建一個球體平衡平台涉及到平台本身的物理結構建造以及用於維持球體平衡的控制算法的理論研究)
+&lt;p&gt;(任務二)&lt;/p&gt;
+&lt;p&gt;(各篇論文要點摘要)&lt;/p&gt;
+&lt;p&gt;文章一  : Construction and theoretical study of a ball balancing platform (構建一個球體平衡平台涉及到平台本身的物理結構建造以及用於維持球體平衡的控制算法的理論研究)
 摘要內容 : 通過實施自動控制理論穩定動態系統時的局限性, 球平衡平臺的構造和理論研究, 通過實施穩定動態系統時的局限性自動控制理論. 通過物理構造的裝置作為理論的演示者, 進一步比較從牛頓力學得出的事實物理和計算機模擬結果. 為了能夠進行比較, 有必要設計一個能夠滿足系統要求的令人滿意的控制器. 在設備和控制方面, 為在平臺上平衡球的系統引入比例積分導數控制器. 進一步允許分析以確定穩定自然不穩定或半穩定系統時的局限性. 建立球體平衡平台的理論模型, 並與實際搭建的平台進行比較. 分析理論與實際結果之間的差異, 探討控制理論與系統實施的挑戰.&lt;/p&gt;
 &lt;p&gt;文章二 : A real time control system for balancing a ball on a platform with FPGA parallel implementation (用於在平臺上平衡球的即時控制系統，具有FPGA並行實現)
 摘要內容 : 在一個FPGA晶元上開發了兩個並行PID控制器，用於獨立控制一個物件的兩個參數。確保了控制物件的PID控制器的輪廓計算的並行處理，調節器的輸出已經歸一化。通過自然類比，提高了在平台上調節球位置的精度。設計的控制器可用於即時控制具有許多受控參數的高速物體。&lt;/p&gt;
@@ -33,11 +33,12 @@
 </summary><content type="html">&lt;p&gt;w7課程&lt;/p&gt;
 
 
-&lt;h1&gt;放假&lt;/h1&gt;</content><category term="w7"></category><category term="網誌編寫"></category></entry><entry><title>w6</title><link href="./41123105_2024-Spring-w6.html" rel="alternate"></link><published>2024-03-29T16:00:00+08:00</published><updated>2024-05-03T05:37:39+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-03-29:./41123105_2024-Spring-w6.html</id><summary type="html">&lt;p&gt;w6課程&lt;/p&gt;
+&lt;h1&gt;放假&lt;/h1&gt;</content><category term="w7"></category><category term="網誌編寫"></category></entry><entry><title>w6</title><link href="./41123105_2024-Spring-w6.html" rel="alternate"></link><published>2024-03-29T16:00:00+08:00</published><updated>2024-05-10T05:34:18+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-03-29:./41123105_2024-Spring-w6.html</id><summary type="html">&lt;p&gt;w6課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;w6課程&lt;/p&gt;
 
 
-&lt;h1&gt;將自己每週更新的內容推回去分組倉儲&lt;/h1&gt;</content><category term="w6"></category><category term="網誌編寫"></category></entry><entry><title>w5</title><link href="./41123105_2024-Spring-w5.html" rel="alternate"></link><published>2024-03-22T16:00:00+08:00</published><updated>2024-05-03T06:04:48+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-03-22:./41123105_2024-Spring-w5.html</id><summary type="html">&lt;p&gt;w5課程&lt;/p&gt;
+&lt;h1&gt;將自己每週更新的內容推回去分組&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://mdecd2024.github.io/2a-midag2/blog/index.html"&gt; 2a-midag2 blog&lt;/a&gt;&lt;/p&gt;</content><category term="w6"></category><category term="網誌編寫"></category></entry><entry><title>w5</title><link href="./41123105_2024-Spring-w5.html" rel="alternate"></link><published>2024-03-22T16:00:00+08:00</published><updated>2024-05-03T06:04:48+08:00</updated><author><name>41123105</name></author><id>tag:None,2024-03-22:./41123105_2024-Spring-w5.html</id><summary type="html">&lt;p&gt;w5課程&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;w5課程&lt;/p&gt;
 
 
