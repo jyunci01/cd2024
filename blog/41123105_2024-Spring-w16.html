@@ -59,7 +59,7 @@
 <meta property="og:url" content="./41123105_2024-Spring-w16.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2024-06-07 16:00:00+08:00"/>
-<meta property="article:modified_time" content="2024-06-12 13:12:23.444870+08:00"/>
+<meta property="article:modified_time" content="2024-06-12 13:17:38.028881+08:00"/>
 <meta property="article:author" content="./author/41123105.html">
 <meta property="article:section" content="w16"/>
 <meta property="article:tag" content="網誌編寫"/>
@@ -74,7 +74,7 @@
   "name": "w16",
   "headline": "w16",
   "datePublished": "2024-06-07 16:00:00+08:00",
-  "dateModified": "2024-06-12 13:12:23.444870+08:00",
+  "dateModified": "2024-06-12 13:17:38.028881+08:00",
   "author": {
     "@type": "Person",
     "name": "41123105",
@@ -237,13 +237,13 @@ init_mathjax();
 <p>(網際綜合球類競賽機器人協同設計與模擬)進籃框得五分進球門得一分。</p>
 <iframe width="853" height="480" src="https://www.youtube.com/embed/EJYANSa4LCc" title="進籃框得五分進球門得一分但電子是記分板都只停在5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<p>問題1:電子是記分板都只停在5再得分還是不會進位
-原因:角度轉到180再丟進一球角度反而重180變到0
-解決:添加了角度範圍檢查和修正，確保角度值在合理範圍內。這樣可以避免角度從正值跳到負值的問題
-問題2:機械式計分器顯示5分但電子式卻顯示4分
-原因:使用 math.floor 的问题 假设累积角度应该是180度，这应该等于5分（180 / 36 = 5）。 然而，由于浮点数的精度问题，累积角度可能会变成179.999999度。 在这种情况下，math.floor(179.999999 / 36) 将返回4，因为 math.floor 向下取整，179.999999 / 36 约为 4.99999997，向下取整结果为4。
-解決:加入0.5修正的优势 如果你加入0.5，计算方式变为 math.floor((179.999999 / 36) + 0.5)。 这里，179.999999 / 36 约等于4.99999997，加上0.5等于5.49999997。 然后 math.floor(5.49999997) 返回5，这就修正了由于浮点数精度问题导致的误差。
-(測試影片)</p>
+<p>問題1:電子是記分板都只停在5再得分還是不會進位</p>
+<p>原因:角度轉到180再丟進一球角度反而重180變到0</p>
+<p>解決:添加了角度範圍檢查和修正，確保角度值在合理範圍內。這樣可以避免角度從正值跳到負值的問題</p>
+<p>問題2:機械式計分器顯示5分但電子式卻顯示4分</p>
+<p>原因:使用 math.floor 的问题 假设累积角度应该是180度，这应该等于5分（180 / 36 = 5）。 然而，由于浮点数的精度问题，累积角度可能会变成179.999999度。 在这种情况下，math.floor(179.999999 / 36) 将返回4，因为 math.floor 向下取整，179.999999 / 36 约为 4.99999997，向下取整结果为4。</p>
+<p>解決:加入0.5修正的优势 如果你加入0.5，计算方式变为 math.floor((179.999999 / 36) + 0.5)。 这里，179.999999 / 36 约等于4.99999997，加上0.5等于5.49999997。 然后 math.floor(5.49999997) 返回5，这就修正了由于浮点数精度问题导致的误差。</p>
+<p>(測試影片)</p>
 <iframe width="853" height="480" src="https://www.youtube.com/embed/3ksJcwWcqSE" title="手動測試" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </section>
 
