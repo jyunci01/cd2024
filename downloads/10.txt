@@ -1,0 +1,465 @@
+﻿# NX 1872
+# Journal created by shark on Sat Jun 15 13:25:09 2024 台北標準時間
+
+#
+import math
+import NXOpen
+import NXOpen.Assemblies
+import NXOpen.Assemblies.ProductInterface
+import NXOpen.PDM
+import NXOpen.Positioning
+import NXOpen.Preferences
+def main() : 
+
+    theSession  = NXOpen.Session.GetSession()
+    workPart = theSession.Parts.Work
+    displayPart = theSession.Parts.Display
+    # ----------------------------------------------
+    #   Menu: Assemblies->Components->Add Component...
+    # ----------------------------------------------
+    markId1 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    addComponentBuilder1 = workPart.AssemblyManager.CreateAddComponentBuilder()
+    
+    componentPositioner1 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner1.ClearNetwork()
+    
+    arrangement1 = workPart.ComponentAssembly.Arrangements.FindObject("Arrangement 1")
+    componentPositioner1.PrimaryArrangement = arrangement1
+    
+    componentPositioner1.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning1 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression1 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    unit1 = workPart.UnitCollection.FindObject("MilliMeter")
+    expression2 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression3 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    unit2 = workPart.UnitCollection.FindObject("Degrees")
+    expression4 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression5 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression6 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression7 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression8 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network1 = componentPositioner1.EstablishNetwork()
+    
+    componentNetwork1 = network1
+    componentNetwork1.MoveObjectsState = True
+    
+    componentNetwork1.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    theSession.SetUndoMarkName(markId1, "Add Component Dialog")
+    
+    componentNetwork1.MoveObjectsState = True
+    
+    markId2 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    addComponentBuilder1.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+    
+    addComponentBuilder1.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+    
+    addComponentBuilder1.SetCount(1)
+    
+    addComponentBuilder1.SetScatterOption(True)
+    
+    addComponentBuilder1.ReferenceSet = "Unknown"
+    
+    addComponentBuilder1.Layer = -1
+    
+    basePart1, partLoadStatus1 = theSession.Parts.OpenBase("Z:\\short joint.prt")
+    
+    partLoadStatus1.Dispose()
+    addComponentBuilder1.ReferenceSet = "Use Model"
+    
+    addComponentBuilder1.Layer = -1
+    
+    partstouse1 = [NXOpen.BasePart.Null] * 1 
+    part1 = basePart1
+    partstouse1[0] = part1
+    addComponentBuilder1.SetPartsToAdd(partstouse1)
+    
+    productinterfaceobjects1 = addComponentBuilder1.GetAllProductInterfaceObjects()
+    
+    coordinates1 = NXOpen.Point3d(-15.142435151708453, -77.639627961679921, 0.0)
+    point1 = workPart.Points.CreatePoint(coordinates1)
+    
+    coordinates2 = NXOpen.Point3d(-15.142435151708453, -77.639627961679921, 0.0)
+    point2 = workPart.Points.CreatePoint(coordinates2)
+    
+    origin1 = NXOpen.Point3d(-15.142435151708453, -77.639627961679921, 0.0)
+    vector1 = NXOpen.Vector3d(0.0, 0.0, 1.0)
+    direction1 = workPart.Directions.CreateDirection(origin1, vector1, NXOpen.SmartObject.UpdateOption.WithinModeling)
+    
+    origin2 = NXOpen.Point3d(-15.142435151708453, -77.639627961679921, 0.0)
+    vector2 = NXOpen.Vector3d(1.0, 0.0, 0.0)
+    direction2 = workPart.Directions.CreateDirection(origin2, vector2, NXOpen.SmartObject.UpdateOption.WithinModeling)
+    
+    xform1 = workPart.Xforms.CreateXformByPointXDirZDir(point2, direction2, direction1, NXOpen.SmartObject.UpdateOption.WithinModeling, 0.625)
+    
+    cartesianCoordinateSystem1 = workPart.CoordinateSystems.CreateCoordinateSystem(xform1, NXOpen.SmartObject.UpdateOption.WithinModeling)
+    
+    point3 = NXOpen.Point3d(-15.142435151708453, -77.639627961679921, 0.0)
+    orientation1 = NXOpen.Matrix3x3()
+    
+    orientation1.Xx = 1.0
+    orientation1.Xy = 0.0
+    orientation1.Xz = 0.0
+    orientation1.Yx = 0.0
+    orientation1.Yy = 1.0
+    orientation1.Yz = 0.0
+    orientation1.Zx = 0.0
+    orientation1.Zy = 0.0
+    orientation1.Zz = 1.0
+    addComponentBuilder1.SetInitialLocationAndOrientation(point3, orientation1)
+    
+    movableObjects1 = [NXOpen.NXObject.Null] * 1 
+    component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT short joint 1")
+    movableObjects1[0] = component1
+    componentNetwork1.SetMovingGroup(movableObjects1)
+    
+    markId3 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+    
+    theSession.DeleteUndoMark(markId3, None)
+    
+    markId4 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+    
+    markId5 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+    
+    componentNetwork1.Solve()
+    
+    componentPositioner1.ClearNetwork()
+    
+    nErrs1 = theSession.UpdateManager.AddToDeleteList(componentNetwork1)
+    
+    nErrs2 = theSession.UpdateManager.DoUpdate(markId2)
+    
+    componentPositioner1.EndAssemblyConstraints()
+    
+    logicalobjects1 = addComponentBuilder1.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+    
+    addComponentBuilder1.ComponentName = "SHORT JOINT"
+    
+    nXObject1 = addComponentBuilder1.Commit()
+    
+    errorList1 = addComponentBuilder1.GetOperationFailures()
+    
+    errorList1.Dispose()
+    theSession.DeleteUndoMark(markId4, None)
+    
+    theSession.SetUndoMarkName(markId1, "Add Component")
+    
+    addComponentBuilder1.Destroy()
+    
+    workPart.Points.DeletePoint(point1)
+    
+    componentPositioner1.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    theSession.DeleteUndoMark(markId2, None)
+    
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId6 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+    
+    markId7 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    componentPositioner2 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner2.ClearNetwork()
+    
+    componentPositioner2.PrimaryArrangement = arrangement1
+    
+    componentPositioner2.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning2 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression9 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    expression10 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression11 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression12 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression13 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression14 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression15 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression16 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network2 = componentPositioner2.EstablishNetwork()
+    
+    componentNetwork2 = network2
+    componentNetwork2.MoveObjectsState = True
+    
+    componentNetwork2.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    componentNetwork2.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    theSession.SetUndoMarkName(markId7, "Assembly Constraints Dialog")
+    
+    componentNetwork2.MoveObjectsState = True
+    
+    componentNetwork2.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    markId8 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    component2 = nXObject1
+    face1 = component2.FindObject("PROTO#.Features|EXTRUDE(2)|FACE 140 {(0.9999999999997,0,4) EXTRUDE(2)}")
+    line1 = workPart.Lines.CreateFaceAxis(face1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    line1.SetVisibility(NXOpen.SmartObject.VisibilityOption.Visible)
+    
+    rotMatrix1 = NXOpen.Matrix3x3()
+    
+    rotMatrix1.Xx = -0.89996720043003364
+    rotMatrix1.Xy = -0.13237978346681337
+    rotMatrix1.Xz = 0.41537288197402106
+    rotMatrix1.Yx = -0.33810054949271151
+    rotMatrix1.Yy = -0.38955918299685455
+    rotMatrix1.Yz = -0.85669811566008791
+    rotMatrix1.Zx = 0.27522183158835845
+    rotMatrix1.Zy = -0.91143800440408407
+    rotMatrix1.Zz = 0.3058328097916358
+    translation1 = NXOpen.Point3d(-51.055651508639684, -18.830361434991623, -27.128944422742236)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix1, translation1, 3.939405287909024)
+    
+    component3 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT body 1")
+    face2 = component3.FindObject("PROTO#.Features|EXTRUDE(9)|FACE 140 {(-13.5,3.5,-0) EXTRUDE(3)}")
+    line2 = workPart.Lines.CreateFaceAxis(face2, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    line2.SetVisibility(NXOpen.SmartObject.VisibilityOption.Visible)
+    
+    markId9 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+    
+    constraint1 = componentPositioner2.CreateConstraint(True)
+    
+    componentConstraint1 = constraint1
+    componentConstraint1.ConstraintAlignment = NXOpen.Positioning.Constraint.Alignment.InferAlign
+    
+    componentConstraint1.ConstraintType = NXOpen.Positioning.Constraint.Type.Touch
+    
+    constraintReference1 = componentConstraint1.CreateConstraintReference(component2, face1, True, False, False)
+    
+    helpPoint1 = NXOpen.Point3d(-15.142435151708419, -77.639627961679707, 4.1130298231888744)
+    constraintReference1.HelpPoint = helpPoint1
+    
+    constraintReference2 = componentConstraint1.CreateConstraintReference(component3, face2, True, False, False)
+    
+    helpPoint2 = NXOpen.Point3d(-29.801600841275643, -42.085580182124978, 1.5450646600323186)
+    constraintReference2.HelpPoint = helpPoint2
+    
+    constraintReference2.SetFixHint(True)
+    
+    objects1 = [NXOpen.TaggedObject.Null] * 1 
+    objects1[0] = line2
+    nErrs3 = theSession.UpdateManager.AddObjectsToDeleteList(objects1)
+    
+    objects2 = [NXOpen.TaggedObject.Null] * 1 
+    objects2[0] = line1
+    nErrs4 = theSession.UpdateManager.AddObjectsToDeleteList(objects2)
+    
+    componentNetwork2.Solve()
+    
+    markId10 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+    
+    theSession.DeleteUndoMark(markId10, None)
+    
+    markId11 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+    
+    nErrs5 = theSession.UpdateManager.DoUpdate(markId8)
+    
+    componentNetwork2.Solve()
+    
+    componentPositioner2.ClearNetwork()
+    
+    nErrs6 = theSession.UpdateManager.AddToDeleteList(componentNetwork2)
+    
+    componentPositioner2.DeleteNonPersistentConstraints()
+    
+    nErrs7 = theSession.UpdateManager.DoUpdate(markId8)
+    
+    theSession.DeleteUndoMark(markId11, None)
+    
+    theSession.SetUndoMarkName(markId7, "Assembly Constraints")
+    
+    componentPositioner2.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    componentPositioner2.EndAssemblyConstraints()
+    
+    theSession.DeleteUndoMark(markId8, None)
+    
+    theSession.DeleteUndoMark(markId9, None)
+    
+    theSession.DeleteUndoMark(markId6, None)
+    
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Move Component...
+    # ----------------------------------------------
+    markId12 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    componentPositioner3 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner3.ClearNetwork()
+    
+    componentPositioner3.PrimaryArrangement = arrangement1
+    
+    componentPositioner3.BeginMoveComponent()
+    
+    allowInterpartPositioning3 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression17 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    expression18 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression19 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression20 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression21 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression22 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression23 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression24 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network3 = componentPositioner3.EstablishNetwork()
+    
+    componentNetwork3 = network3
+    componentNetwork3.MoveObjectsState = True
+    
+    componentNetwork3.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    componentNetwork3.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    expression25 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression26 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression27 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression28 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression29 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    componentNetwork3.RemoveAllConstraints()
+    
+    movableObjects2 = []
+    componentNetwork3.SetMovingGroup(movableObjects2)
+    
+    componentNetwork3.Solve()
+    
+    theSession.SetUndoMarkName(markId12, "Move Component Dialog")
+    
+    componentNetwork3.MoveObjectsState = True
+    
+    markId13 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Move Component Update")
+    
+    componentNetwork3.RemoveAllConstraints()
+    
+    movableObjects3 = [NXOpen.NXObject.Null] * 1 
+    movableObjects3[0] = component2
+    componentNetwork3.SetMovingGroup(movableObjects3)
+    
+    componentNetwork3.Solve()
+    
+    markId14 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Transform Origin")
+    
+    loaded1 = componentNetwork3.IsReferencedGeometryLoaded()
+    
+    componentNetwork3.BeginDrag()
+    
+    point4 = NXOpen.Point3d(-29.801600841275743, -42.085580182125142, 4.0)
+    direction3 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point4, direction3)
+    
+    point5 = NXOpen.Point3d(-30.906684995630943, -42.085580182125142, 10.765716222720583)
+    direction4 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point5, direction4)
+    
+    point6 = NXOpen.Point3d(-31.006140373777573, -42.085580182125142, 16.371212327123953)
+    direction5 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point6, direction5)
+    
+    point7 = NXOpen.Point3d(-30.89518062462956, -42.085580182125142, 17.581786644705488)
+    direction6 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point7, direction6)
+    
+    point8 = NXOpen.Point3d(-30.868396893220684, -42.085580182125142, 17.963205419884861)
+    direction7 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point8, direction7)
+    
+    point9 = NXOpen.Point3d(-31.000393171687527, -42.085580182125142, 18.485685409550957)
+    direction8 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point9, direction8)
+    
+    point10 = NXOpen.Point3d(-31.006130406956299, -42.085580182125142, 18.958336584254862)
+    direction9 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point10, direction9)
+    
+    point11 = NXOpen.Point3d(-31.073084752067842, -42.085580182125142, 19.29835177487189)
+    direction10 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point11, direction10)
+    
+    point12 = NXOpen.Point3d(-31.073084752067842, -42.085580182125142, 19.29835177487189)
+    direction11 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point12, direction11)
+    
+    point13 = NXOpen.Point3d(-31.073084752067842, -42.085580182125142, 19.29835177487189)
+    direction12 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point13, direction12)
+    
+    point14 = NXOpen.Point3d(-31.073084752067842, -42.085580182125142, 19.29835177487189)
+    direction13 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    componentNetwork3.DragByRay(point14, direction13)
+    
+    componentNetwork3.EndDrag()
+    
+    componentNetwork3.ResetDisplay()
+    
+    componentNetwork3.ApplyToModel()
+    
+    markId15 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Move Component")
+    
+    theSession.DeleteUndoMark(markId15, None)
+    
+    markId16 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Move Component")
+    
+    componentNetwork3.Solve()
+    
+    componentPositioner3.ClearNetwork()
+    
+    nErrs8 = theSession.UpdateManager.AddToDeleteList(componentNetwork3)
+    
+    componentPositioner3.DeleteNonPersistentConstraints()
+    
+    nErrs9 = theSession.UpdateManager.DoUpdate(markId13)
+    
+    theSession.DeleteUndoMark(markId16, None)
+    
+    theSession.SetUndoMarkName(markId12, "Move Component")
+    
+    componentPositioner3.EndMoveComponent()
+    
+    componentPositioner3.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    theSession.DeleteUndoMarksUpToMark(markId13, None, False)
+    
+    # ----------------------------------------------
+    #   Menu: Tools->Journal->Stop Recording
+    # ----------------------------------------------
+    
+if __name__ == '__main__':
+    main()

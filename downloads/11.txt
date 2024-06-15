@@ -1,0 +1,921 @@
+﻿# NX 1872
+# Journal created by shark on Sat Jun 15 13:25:53 2024 台北標準時間
+
+#
+import math
+import NXOpen
+import NXOpen.Assemblies
+import NXOpen.Assemblies.ProductInterface
+import NXOpen.PDM
+import NXOpen.Positioning
+import NXOpen.Preferences
+def main() : 
+
+    theSession  = NXOpen.Session.GetSession()
+    workPart = theSession.Parts.Work
+    displayPart = theSession.Parts.Display
+    # ----------------------------------------------
+    #   Menu: Assemblies->Components->Add Component...
+    # ----------------------------------------------
+    markId1 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    addComponentBuilder1 = workPart.AssemblyManager.CreateAddComponentBuilder()
+    
+    componentPositioner1 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner1.ClearNetwork()
+    
+    arrangement1 = workPart.ComponentAssembly.Arrangements.FindObject("Arrangement 1")
+    componentPositioner1.PrimaryArrangement = arrangement1
+    
+    componentPositioner1.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning1 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression1 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    unit1 = workPart.UnitCollection.FindObject("MilliMeter")
+    expression2 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression3 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    unit2 = workPart.UnitCollection.FindObject("Degrees")
+    expression4 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression5 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression6 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression7 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression8 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network1 = componentPositioner1.EstablishNetwork()
+    
+    componentNetwork1 = network1
+    componentNetwork1.MoveObjectsState = True
+    
+    componentNetwork1.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    theSession.SetUndoMarkName(markId1, "Add Component Dialog")
+    
+    componentNetwork1.MoveObjectsState = True
+    
+    markId2 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    addComponentBuilder1.SetComponentAnchor(NXOpen.Assemblies.ProductInterface.InterfaceObject.Null)
+    
+    addComponentBuilder1.SetInitialLocationType(NXOpen.Assemblies.AddComponentBuilder.LocationType.Snap)
+    
+    addComponentBuilder1.SetCount(1)
+    
+    addComponentBuilder1.SetScatterOption(True)
+    
+    addComponentBuilder1.ReferenceSet = "Unknown"
+    
+    addComponentBuilder1.Layer = -1
+    
+    basePart1, partLoadStatus1 = theSession.Parts.OpenBase("Z:\\h arm.prt")
+    
+    partLoadStatus1.Dispose()
+    addComponentBuilder1.ReferenceSet = "Use Model"
+    
+    addComponentBuilder1.Layer = -1
+    
+    partstouse1 = [NXOpen.BasePart.Null] * 1 
+    part1 = basePart1
+    partstouse1[0] = part1
+    addComponentBuilder1.SetPartsToAdd(partstouse1)
+    
+    productinterfaceobjects1 = addComponentBuilder1.GetAllProductInterfaceObjects()
+    
+    coordinates1 = NXOpen.Point3d(-59.390403293512279, 42.689161657146471, 0.0)
+    point1 = workPart.Points.CreatePoint(coordinates1)
+    
+    coordinates2 = NXOpen.Point3d(-59.390403293512279, 42.689161657146471, 0.0)
+    point2 = workPart.Points.CreatePoint(coordinates2)
+    
+    origin1 = NXOpen.Point3d(-59.390403293512279, 42.689161657146471, 0.0)
+    vector1 = NXOpen.Vector3d(0.0, 0.0, 1.0)
+    direction1 = workPart.Directions.CreateDirection(origin1, vector1, NXOpen.SmartObject.UpdateOption.WithinModeling)
+    
+    origin2 = NXOpen.Point3d(-59.390403293512279, 42.689161657146471, 0.0)
+    vector2 = NXOpen.Vector3d(1.0, 0.0, 0.0)
+    direction2 = workPart.Directions.CreateDirection(origin2, vector2, NXOpen.SmartObject.UpdateOption.WithinModeling)
+    
+    xform1 = workPart.Xforms.CreateXformByPointXDirZDir(point2, direction2, direction1, NXOpen.SmartObject.UpdateOption.WithinModeling, 0.625)
+    
+    cartesianCoordinateSystem1 = workPart.CoordinateSystems.CreateCoordinateSystem(xform1, NXOpen.SmartObject.UpdateOption.WithinModeling)
+    
+    point3 = NXOpen.Point3d(-59.390403293512279, 42.689161657146471, 0.0)
+    orientation1 = NXOpen.Matrix3x3()
+    
+    orientation1.Xx = 1.0
+    orientation1.Xy = 0.0
+    orientation1.Xz = 0.0
+    orientation1.Yx = 0.0
+    orientation1.Yy = 1.0
+    orientation1.Yz = 0.0
+    orientation1.Zx = 0.0
+    orientation1.Zy = 0.0
+    orientation1.Zz = 1.0
+    addComponentBuilder1.SetInitialLocationAndOrientation(point3, orientation1)
+    
+    movableObjects1 = [NXOpen.NXObject.Null] * 1 
+    component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT h arm 1")
+    movableObjects1[0] = component1
+    componentNetwork1.SetMovingGroup(movableObjects1)
+    
+    markId3 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+    
+    theSession.DeleteUndoMark(markId3, None)
+    
+    markId4 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Add Component")
+    
+    markId5 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "AddComponent on_apply")
+    
+    componentNetwork1.Solve()
+    
+    componentPositioner1.ClearNetwork()
+    
+    nErrs1 = theSession.UpdateManager.AddToDeleteList(componentNetwork1)
+    
+    nErrs2 = theSession.UpdateManager.DoUpdate(markId2)
+    
+    componentPositioner1.EndAssemblyConstraints()
+    
+    logicalobjects1 = addComponentBuilder1.GetLogicalObjectsHavingUnassignedRequiredAttributes()
+    
+    addComponentBuilder1.ComponentName = "H ARM"
+    
+    nXObject1 = addComponentBuilder1.Commit()
+    
+    errorList1 = addComponentBuilder1.GetOperationFailures()
+    
+    errorList1.Dispose()
+    theSession.DeleteUndoMark(markId4, None)
+    
+    theSession.SetUndoMarkName(markId1, "Add Component")
+    
+    addComponentBuilder1.Destroy()
+    
+    workPart.Points.DeletePoint(point1)
+    
+    componentPositioner1.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    theSession.DeleteUndoMark(markId2, None)
+    
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    markId6 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+    
+    markId7 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    componentPositioner2 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner2.ClearNetwork()
+    
+    componentPositioner2.PrimaryArrangement = arrangement1
+    
+    componentPositioner2.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning2 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression9 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    expression10 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression11 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression12 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression13 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression14 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression15 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression16 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network2 = componentPositioner2.EstablishNetwork()
+    
+    componentNetwork2 = network2
+    componentNetwork2.MoveObjectsState = True
+    
+    componentNetwork2.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    componentNetwork2.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    theSession.SetUndoMarkName(markId7, "Assembly Constraints Dialog")
+    
+    componentNetwork2.MoveObjectsState = True
+    
+    componentNetwork2.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    markId8 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    scaleAboutPoint1 = NXOpen.Point3d(-4.264867521560503, -16.58932720984928, 0.0)
+    viewCenter1 = NXOpen.Point3d(4.2648675215603919, 16.589327209849301, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint1, viewCenter1)
+    
+    scaleAboutPoint2 = NXOpen.Point3d(-0.46174746788555193, -26.86530722242798, 0.0)
+    viewCenter2 = NXOpen.Point3d(0.4617474678854272, 26.865307222428008, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint2, viewCenter2)
+    
+    scaleAboutPoint3 = NXOpen.Point3d(1.731553004570499, -35.680486154787154, 0.0)
+    viewCenter3 = NXOpen.Point3d(-1.7315530045706116, 35.680486154787189, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint3, viewCenter3)
+    
+    scaleAboutPoint4 = NXOpen.Point3d(1.2173342335162187, -29.048113434250251, 0.0)
+    viewCenter4 = NXOpen.Point3d(-1.2173342335163295, 29.048113434250279, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint4, viewCenter4)
+    
+    scaleAboutPoint5 = NXOpen.Point3d(0.70521431458867523, -23.439980551568414, 0.0)
+    viewCenter5 = NXOpen.Point3d(-0.70521431458878603, 23.439980551568443, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint5, viewCenter5)
+    
+    rotMatrix1 = NXOpen.Matrix3x3()
+    
+    rotMatrix1.Xx = -0.93126185430328212
+    rotMatrix1.Xy = -0.022675059193607523
+    rotMatrix1.Xz = 0.36364433229486159
+    rotMatrix1.Yx = -0.31651427000075127
+    rotMatrix1.Yy = -0.44401733662935944
+    rotMatrix1.Yz = -0.8382525405022383
+    rotMatrix1.Zx = 0.18047181388100672
+    rotMatrix1.Zy = -0.89573123561877244
+    rotMatrix1.Zz = 0.4063194284443748
+    translation1 = NXOpen.Point3d(-54.473484781445144, -10.984410792106521, -32.246574604295276)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix1, translation1, 4.9242566098862808)
+    
+    rotMatrix2 = NXOpen.Matrix3x3()
+    
+    rotMatrix2.Xx = -0.94965012890070377
+    rotMatrix2.Xy = 0.024966679963583427
+    rotMatrix2.Xz = 0.31231602195607816
+    rotMatrix2.Yx = -0.2259785281778024
+    rotMatrix2.Yy = -0.7450459178296337
+    rotMatrix2.Yz = -0.62756695668907514
+    rotMatrix2.Zx = 0.21702151386779034
+    rotMatrix2.Zy = -0.66654575628158585
+    rotMatrix2.Zz = 0.71317488549551322
+    translation2 = NXOpen.Point3d(-55.244214526645692, -6.9088206400336034, -32.083297474483778)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix2, translation2, 4.9242566098862808)
+    
+    scaleAboutPoint6 = NXOpen.Point3d(3.6268164750277267, -14.668457743445671, 0.0)
+    viewCenter6 = NXOpen.Point3d(-3.6268164750278333, 14.668457743445694, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint6, viewCenter6)
+    
+    scaleAboutPoint7 = NXOpen.Point3d(4.5335205937846697, -18.335572179307093, 0.0)
+    viewCenter7 = NXOpen.Point3d(-4.533520593784786, 18.335572179307118, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint7, viewCenter7)
+    
+    scaleAboutPoint8 = NXOpen.Point3d(5.5829466571607593, -22.919465224133862, 0.0)
+    viewCenter8 = NXOpen.Point3d(-5.5829466571608704, 22.919465224133891, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint8, viewCenter8)
+    
+    scaleAboutPoint9 = NXOpen.Point3d(6.9786833214509647, -28.64933153016732, 0.0)
+    viewCenter9 = NXOpen.Point3d(-6.9786833214510686, 28.649331530167355, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint9, viewCenter9)
+    
+    scaleAboutPoint10 = NXOpen.Point3d(7.4115715725935889, -34.499881833489049, 0.0)
+    viewCenter10 = NXOpen.Point3d(-7.4115715725937195, 34.49988183348907, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint10, viewCenter10)
+    
+    scaleAboutPoint11 = NXOpen.Point3d(9.2644644657420123, -43.124852291861302, 0.0)
+    viewCenter11 = NXOpen.Point3d(-9.2644644657421207, 43.124852291861345, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint11, viewCenter11)
+    
+    scaleAboutPoint12 = NXOpen.Point3d(11.580580582177548, -53.906065364826624, 0.0)
+    viewCenter12 = NXOpen.Point3d(-11.580580582177616, 53.906065364826659, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint12, viewCenter12)
+    
+    scaleAboutPoint13 = NXOpen.Point3d(14.731933262725871, -67.638789241037216, 0.0)
+    viewCenter13 = NXOpen.Point3d(-14.731933262725956, 67.638789241037244, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint13, viewCenter13)
+    
+    scaleAboutPoint14 = NXOpen.Point3d(28.983477397319383, -94.156269113943836, 0.0)
+    viewCenter14 = NXOpen.Point3d(-28.98347739731949, 94.156269113943893, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint14, viewCenter14)
+    
+    scaleAboutPoint15 = NXOpen.Point3d(37.430319566980252, -120.09728203309163, 0.0)
+    viewCenter15 = NXOpen.Point3d(-37.430319566980252, 120.09728203309163, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint15, viewCenter15)
+    
+    scaleAboutPoint16 = NXOpen.Point3d(47.788710142334352, -154.12484527580088, 0.0)
+    viewCenter16 = NXOpen.Point3d(-47.788710142334352, 154.12484527580096, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint16, viewCenter16)
+    
+    rotMatrix3 = NXOpen.Matrix3x3()
+    
+    rotMatrix3.Xx = -0.97024428832913678
+    rotMatrix3.Xy = 0.054486790391531835
+    rotMatrix3.Xz = 0.23591780483361807
+    rotMatrix3.Yx = -0.11090680996863184
+    rotMatrix3.Yy = -0.96613567853935745
+    rotMatrix3.Yz = -0.23298396974013791
+    rotMatrix3.Zx = 0.21523405972862533
+    rotMatrix3.Zy = -0.25221625706151807
+    rotMatrix3.Zz = 0.94343057996156143
+    translation3 = NXOpen.Point3d(-11.512493350179135, -165.54374903733915, -33.790541719681862)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix3, translation3, 0.42299042193146841)
+    
+    scaleAboutPoint17 = NXOpen.Point3d(-54.731834259872493, -102.58309506993237, 0.0)
+    viewCenter17 = NXOpen.Point3d(54.731834259872493, 102.58309506993243, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint17, viewCenter17)
+    
+    scaleAboutPoint18 = NXOpen.Point3d(-62.159726052283879, -126.66510214427633, 0.0)
+    viewCenter18 = NXOpen.Point3d(62.159726052283617, 126.66510214427633, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint18, viewCenter18)
+    
+    scaleAboutPoint19 = NXOpen.Point3d(-77.699657565354855, -158.33137768034544, 0.0)
+    viewCenter19 = NXOpen.Point3d(77.699657565354528, 158.33137768034544, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint19, viewCenter19)
+    
+    scaleAboutPoint20 = NXOpen.Point3d(-97.124571956693558, -197.91422210043177, 0.0)
+    viewCenter20 = NXOpen.Point3d(97.12457195669316, 197.91422210043177, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint20, viewCenter20)
+    
+    scaleAboutPoint21 = NXOpen.Point3d(-121.40571494586693, -247.39277762553979, 0.0)
+    viewCenter21 = NXOpen.Point3d(121.40571494586642, 247.39277762553954, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint21, viewCenter21)
+    
+    scaleAboutPoint22 = NXOpen.Point3d(-81.128032786153369, -505.85714560777774, 0.0)
+    viewCenter22 = NXOpen.Point3d(81.128032786152744, 505.85714560777774, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint22, viewCenter22)
+    
+    scaleAboutPoint23 = NXOpen.Point3d(-58.793962583847701, -409.26706422002866, 0.0)
+    viewCenter23 = NXOpen.Point3d(58.793962583847197, 409.26706422002837, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint23, viewCenter23)
+    
+    scaleAboutPoint24 = NXOpen.Point3d(-42.148399151018054, -327.41365137602293, 0.0)
+    viewCenter24 = NXOpen.Point3d(42.148399151017649, 327.41365137602281, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint24, viewCenter24)
+    
+    scaleAboutPoint25 = NXOpen.Point3d(-29.809302587966435, -261.9309211008183, 0.0)
+    viewCenter25 = NXOpen.Point3d(29.809302587966112, 261.93092110081807, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint25, viewCenter25)
+    
+    scaleAboutPoint26 = NXOpen.Point3d(-19.938025337525119, -209.54473688065474, 0.0)
+    viewCenter26 = NXOpen.Point3d(19.938025337524859, 209.54473688065448, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint26, viewCenter26)
+    
+    scaleAboutPoint27 = NXOpen.Point3d(-15.950420270020093, -167.63578950452376, 0.0)
+    viewCenter27 = NXOpen.Point3d(15.950420270019835, 167.63578950452356, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint27, viewCenter27)
+    
+    scaleAboutPoint28 = NXOpen.Point3d(-12.259930874211507, -128.60417284376899, 0.0)
+    viewCenter28 = NXOpen.Point3d(12.259930874211301, 128.60417284376882, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint28, viewCenter28)
+    
+    scaleAboutPoint29 = NXOpen.Point3d(3.0024320508271578, -54.844425461778556, 0.0)
+    viewCenter29 = NXOpen.Point3d(-3.002432050827422, 54.844425461778457, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint29, viewCenter29)
+    
+    scaleAboutPoint30 = NXOpen.Point3d(2.7222050594166487, -42.594502694403225, 0.0)
+    viewCenter30 = NXOpen.Point3d(-2.7222050594168867, 42.594502694403118, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint30, viewCenter30)
+    
+    scaleAboutPoint31 = NXOpen.Point3d(2.1777640475332762, -32.794564480502949, 0.0)
+    viewCenter31 = NXOpen.Point3d(-2.1777640475335298, 32.794564480502849, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint31, viewCenter31)
+    
+    scaleAboutPoint32 = NXOpen.Point3d(-2.3571093220362562, -0.40993205600633342, 0.0)
+    viewCenter32 = NXOpen.Point3d(2.3571093220360364, 0.40993205600623189, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint32, viewCenter32)
+    
+    scaleAboutPoint33 = NXOpen.Point3d(-1.8856874576290321, -1.8037010464277046, 0.0)
+    viewCenter33 = NXOpen.Point3d(1.8856874576288156, 1.8037010464276233, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint33, viewCenter33)
+    
+    scaleAboutPoint34 = NXOpen.Point3d(-1.5085499661032475, -1.4429608371421745, 0.0)
+    viewCenter34 = NXOpen.Point3d(1.5085499661030202, 1.4429608371420879, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint34, viewCenter34)
+    
+    scaleAboutPoint35 = NXOpen.Point3d(-1.206839972882598, -1.1543686697137483, 0.0)
+    viewCenter35 = NXOpen.Point3d(1.2068399728824073, 1.1543686697136704, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint35, viewCenter35)
+    
+    rotMatrix4 = NXOpen.Matrix3x3()
+    
+    rotMatrix4.Xx = -0.97300644085833854
+    rotMatrix4.Xy = 0.054866665387396409
+    rotMatrix4.Xz = 0.22416091335791116
+    rotMatrix4.Yx = 0.044534493495938826
+    rotMatrix4.Yy = -0.90842892457542157
+    rotMatrix4.Yz = 0.41566039970605845
+    rotMatrix4.Zx = 0.22644015751903518
+    rotMatrix4.Zy = 0.41442313886172794
+    rotMatrix4.Zz = 0.88146373552105994
+    translation4 = NXOpen.Point3d(-63.073575545069154, 57.417202803801139, -61.805519963941236)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix4, translation4, 3.1515242303272215)
+    
+    markId9 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+    
+    constraint1 = componentPositioner2.CreateConstraint(True)
+    
+    componentConstraint1 = constraint1
+    componentConstraint1.ConstraintType = NXOpen.Positioning.Constraint.Type.Concentric
+    
+    component2 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT short joint 1")
+    edge1 = component2.FindObject("PROTO#.Features|EXTRUDE(2)|EDGE * 130 * 140 {(-0.4999999999999,0.8660254037842,8)(0.9999999999997,0,8)(-0.4999999999999,-0.8660254037842,8) EXTRUDE(2)}")
+    constraintReference1 = componentConstraint1.CreateConstraintReference(component2, edge1, False, False, False)
+    
+    helpPoint1 = NXOpen.Point3d(-30.794104848251088, -41.963368087235324, 23.29835177487189)
+    constraintReference1.HelpPoint = helpPoint1
+    
+    component3 = nXObject1
+    edge2 = component3.FindObject("PROTO#.Features|EXTRUDE(3)|EDGE * 210 EXTRUDE(5) 170 {(-1.1339745962156,7.6,2)(-2,7.6,0.5)(-2.8660254037844,7.6,2) EXTRUDE(3)}")
+    constraintReference2 = componentConstraint1.CreateConstraintReference(component3, edge2, False, False, False)
+    
+    helpPoint2 = NXOpen.Point3d(-61.560400838188009, 50.289161657146465, 0.51455551409314493)
+    constraintReference2.HelpPoint = helpPoint2
+    
+    constraintReference2.SetFixHint(True)
+    
+    componentNetwork2.Solve()
+    
+    scaleAboutPoint36 = NXOpen.Point3d(-29.845677242416155, 10.746122888971142, 0.0)
+    viewCenter36 = NXOpen.Point3d(29.845677242415949, -10.746122888971223, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint36, viewCenter36)
+    
+    scaleAboutPoint37 = NXOpen.Point3d(-36.25767048964407, 14.796907493602843, 0.0)
+    viewCenter37 = NXOpen.Point3d(36.257670489643878, -14.796907493602948, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint37, viewCenter37)
+    
+    scaleAboutPoint38 = NXOpen.Point3d(-43.485592501146904, 19.020847398691625, 0.0)
+    viewCenter38 = NXOpen.Point3d(43.485592501146705, -19.020847398691721, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint38, viewCenter38)
+    
+    scaleAboutPoint39 = NXOpen.Point3d(-52.389316757603474, 22.628249491546939, 0.0)
+    viewCenter39 = NXOpen.Point3d(52.389316757603233, -22.62824949154702, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint39, viewCenter39)
+    
+    scaleAboutPoint40 = NXOpen.Point3d(-62.002223470950838, 25.005855416383405, 0.0)
+    viewCenter40 = NXOpen.Point3d(62.002223470950582, -25.00585541638349, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint40, viewCenter40)
+    
+    scaleAboutPoint41 = NXOpen.Point3d(-70.585175893582473, 30.232489130463517, 0.0)
+    viewCenter41 = NXOpen.Point3d(70.585175893582218, -30.232489130463644, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint41, viewCenter41)
+    
+    scaleAboutPoint42 = NXOpen.Point3d(-88.231469866978017, 37.790611413079411, 0.0)
+    viewCenter42 = NXOpen.Point3d(88.231469866977804, -37.790611413079517, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint42, viewCenter42)
+    
+    scaleAboutPoint43 = NXOpen.Point3d(-110.28933733372247, 47.238264266349276, 0.0)
+    viewCenter43 = NXOpen.Point3d(110.28933733372233, -47.238264266349411, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint43, viewCenter43)
+    
+    scaleAboutPoint44 = NXOpen.Point3d(-137.86167166715308, 59.047830332936627, 0.0)
+    viewCenter44 = NXOpen.Point3d(137.8616716671529, -59.04783033293667, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint44, viewCenter44)
+    
+    scaleAboutPoint45 = NXOpen.Point3d(-172.32708958394133, 73.809787916170777, 0.0)
+    viewCenter45 = NXOpen.Point3d(172.32708958394113, -73.80978791617089, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint45, viewCenter45)
+    
+    scaleAboutPoint46 = NXOpen.Point3d(-220.88204540591389, 118.06438533201047, 0.0)
+    viewCenter46 = NXOpen.Point3d(220.88204540591363, -118.0643853320106, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint46, viewCenter46)
+    
+    scaleAboutPoint47 = NXOpen.Point3d(-274.14784839096831, 153.44460676428511, 0.0)
+    viewCenter47 = NXOpen.Point3d(274.14784839096797, -153.44460676428525, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint47, viewCenter47)
+    
+    scaleAboutPoint48 = NXOpen.Point3d(-370.78374325605563, 295.64964042163223, 0.0)
+    viewCenter48 = NXOpen.Point3d(370.78374325605523, -295.6496404216324, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint48, viewCenter48)
+    
+    scaleAboutPoint49 = NXOpen.Point3d(-302.49111970411656, 243.36119161978985, 0.0)
+    viewCenter49 = NXOpen.Point3d(302.49111970411627, -243.36119161979002, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint49, viewCenter49)
+    
+    scaleAboutPoint50 = NXOpen.Point3d(-242.77477910986289, 194.68895329583191, 0.0)
+    viewCenter50 = NXOpen.Point3d(242.77477910986264, -194.68895329583205, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint50, viewCenter50)
+    
+    scaleAboutPoint51 = NXOpen.Point3d(-196.09634331965736, 156.37666931392124, 0.0)
+    viewCenter51 = NXOpen.Point3d(196.09634331965717, -156.3766693139213, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint51, viewCenter51)
+    
+    scaleAboutPoint52 = NXOpen.Point3d(-158.37829068113965, 125.60174079294157, 0.0)
+    viewCenter52 = NXOpen.Point3d(158.37829068113939, -125.6017407929416, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint52, viewCenter52)
+    
+    scaleAboutPoint53 = NXOpen.Point3d(-120.29744416981343, 57.246371102440307, 0.0)
+    viewCenter53 = NXOpen.Point3d(120.2974441698133, -57.246371102440342, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint53, viewCenter53)
+    
+    scaleAboutPoint54 = NXOpen.Point3d(-96.237955335850728, 45.476837463197306, 0.0)
+    viewCenter54 = NXOpen.Point3d(96.237955335850629, -45.476837463197356, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint54, viewCenter54)
+    
+    scaleAboutPoint55 = NXOpen.Point3d(-76.477949198672789, 35.86905490054999, 0.0)
+    viewCenter55 = NXOpen.Point3d(76.477949198672661, -35.869054900550026, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint55, viewCenter55)
+    
+    scaleAboutPoint56 = NXOpen.Point3d(-60.77242730293198, 28.080345836430563, 0.0)
+    viewCenter56 = NXOpen.Point3d(60.772427302931774, -28.080345836430613, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint56, viewCenter56)
+    
+    scaleAboutPoint57 = NXOpen.Point3d(-34.024360648521814, 18.364956109081593, 0.0)
+    viewCenter57 = NXOpen.Point3d(34.024360648521636, -18.364956109081636, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint57, viewCenter57)
+    
+    scaleAboutPoint58 = NXOpen.Point3d(-27.088310260895458, 14.691964887265264, 0.0)
+    viewCenter58 = NXOpen.Point3d(27.088310260895284, -14.691964887265307, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint58, viewCenter58)
+    
+    scaleAboutPoint59 = NXOpen.Point3d(-21.670648208716386, 12.068399728825028, 0.0)
+    viewCenter59 = NXOpen.Point3d(21.670648208716212, -12.068399728825081, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint59, viewCenter59)
+    
+    rotMatrix5 = NXOpen.Matrix3x3()
+    
+    rotMatrix5.Xx = -0.96152555651568039
+    rotMatrix5.Xy = 0.057669263195614787
+    rotMatrix5.Xz = 0.26859422974010999
+    rotMatrix5.Yx = -0.27468864842239554
+    rotMatrix5.Yy = -0.18815822023474416
+    rotMatrix5.Yz = -0.94294359883609391
+    rotMatrix5.Zx = -0.003840650346677786
+    rotMatrix5.Zy = -0.98044415457514122
+    rotMatrix5.Zz = 0.19676002938693249
+    translation5 = NXOpen.Point3d(-45.909589000404743, -9.1616121303679243, -126.78952021812648)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix5, translation5, 3.1515242303272215)
+    
+    markId10 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+    
+    nErrs3 = theSession.UpdateManager.DoUpdate(markId8)
+    
+    componentNetwork2.Solve()
+    
+    componentPositioner2.ClearNetwork()
+    
+    nErrs4 = theSession.UpdateManager.AddToDeleteList(componentNetwork2)
+    
+    componentPositioner2.DeleteNonPersistentConstraints()
+    
+    nErrs5 = theSession.UpdateManager.DoUpdate(markId8)
+    
+    theSession.DeleteUndoMark(markId10, None)
+    
+    theSession.SetUndoMarkName(markId7, "Assembly Constraints")
+    
+    componentPositioner2.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    componentPositioner2.EndAssemblyConstraints()
+    
+    theSession.DeleteUndoMark(markId8, None)
+    
+    theSession.DeleteUndoMark(markId9, None)
+    
+    markId11 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    componentPositioner3 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner3.ClearNetwork()
+    
+    componentPositioner3.PrimaryArrangement = arrangement1
+    
+    componentPositioner3.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning3 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression17 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    expression18 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression19 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression20 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression21 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression22 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression23 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression24 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network3 = componentPositioner3.EstablishNetwork()
+    
+    componentNetwork3 = network3
+    componentNetwork3.MoveObjectsState = True
+    
+    componentNetwork3.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    componentNetwork3.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    theSession.SetUndoMarkName(markId11, "Assembly Constraints Dialog")
+    
+    componentNetwork3.MoveObjectsState = True
+    
+    componentNetwork3.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    markId12 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    # ----------------------------------------------
+    #   Dialog Begin Assembly Constraints
+    # ----------------------------------------------
+    # ----------------------------------------------
+    #   Menu: Assemblies->Component Position->Assembly Constraints...
+    # ----------------------------------------------
+    componentPositioner3.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    componentPositioner3.EndAssemblyConstraints()
+    
+    theSession.DeleteUndoMark(markId12, None)
+    
+    theSession.UndoToMark(markId11, None)
+    
+    theSession.DeleteUndoMark(markId11, None)
+    
+    theSession.DeleteUndoMark(markId6, None)
+    
+    markId13 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Create Constraints with Positioning Task")
+    
+    markId14 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    componentPositioner4 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner4.ClearNetwork()
+    
+    componentPositioner4.PrimaryArrangement = arrangement1
+    
+    componentPositioner4.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning4 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression25 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    expression26 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression27 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression28 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression29 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression30 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression31 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression32 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network4 = componentPositioner4.EstablishNetwork()
+    
+    componentNetwork4 = network4
+    componentNetwork4.MoveObjectsState = True
+    
+    componentNetwork4.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    componentNetwork4.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    theSession.SetUndoMarkName(markId14, "Assembly Constraints Dialog")
+    
+    componentNetwork4.MoveObjectsState = True
+    
+    componentNetwork4.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    markId15 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    rotMatrix6 = NXOpen.Matrix3x3()
+    
+    rotMatrix6.Xx = -0.90900104082819611
+    rotMatrix6.Xy = -0.27766734607836135
+    rotMatrix6.Xz = 0.31083428494143428
+    rotMatrix6.Yx = -0.41199958982438389
+    rotMatrix6.Yy = 0.48581935754165367
+    rotMatrix6.Yz = -0.77086697284443917
+    rotMatrix6.Zx = 0.063035273917009652
+    rotMatrix6.Zy = -0.82878247855490328
+    rotMatrix6.Zz = -0.5560091343517588
+    translation6 = NXOpen.Point3d(-58.770741201078103, 14.556124753456313, -114.88792293562446)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix6, translation6, 3.1515242303272215)
+    
+    markId16 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Create Constraint")
+    
+    constraint2 = componentPositioner4.CreateConstraint(True)
+    
+    componentConstraint2 = constraint2
+    componentConstraint2.ConstraintType = NXOpen.Positioning.Constraint.Type.Distance
+    
+    component4 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT body 1")
+    face1 = component4.FindObject("PROTO#.Features|EXTRUDE(5)|FACE 190 {(-17.35,2.5,2) EXTRUDE(3)}")
+    constraintReference3 = componentConstraint2.CreateConstraintReference(component4, face1, False, False, False)
+    
+    helpPoint3 = NXOpen.Point3d(-33.450139609484729, -42.45243120013744, 2.0000000000095497)
+    constraintReference3.HelpPoint = helpPoint3
+    
+    face2 = component3.FindObject("PROTO#.Features|EXTRUDE(3)|FACE 190 {(-8,6,1.5) EXTRUDE(3)}")
+    constraintReference4 = componentConstraint2.CreateConstraintReference(component3, face2, False, False, False)
+    
+    helpPoint4 = NXOpen.Point3d(-36.193141768851852, -42.12454089591278, 21.698351774843701)
+    constraintReference4.HelpPoint = helpPoint4
+    
+    constraintReference4.SetFixHint(True)
+    
+    componentConstraint2.SetExpression("0")
+    
+    componentConstraint2.SetExpression("19.6983517748719")
+    
+    componentNetwork4.Solve()
+    
+    componentNetwork4.AddConstraint(componentConstraint2)
+    
+    expression33 = workPart.Expressions.FindObject("p8")
+    expression33.RightHandSide = "0.2"
+    
+    componentNetwork4.Solve()
+    
+    markId17 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints")
+    
+    nErrs6 = theSession.UpdateManager.DoUpdate(markId15)
+    
+    componentNetwork4.Solve()
+    
+    componentPositioner4.ClearNetwork()
+    
+    nErrs7 = theSession.UpdateManager.AddToDeleteList(componentNetwork4)
+    
+    componentPositioner4.DeleteNonPersistentConstraints()
+    
+    nErrs8 = theSession.UpdateManager.DoUpdate(markId15)
+    
+    theSession.DeleteUndoMark(markId17, None)
+    
+    theSession.SetUndoMarkName(markId14, "Assembly Constraints")
+    
+    componentPositioner4.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    componentPositioner4.EndAssemblyConstraints()
+    
+    theSession.DeleteUndoMark(markId15, None)
+    
+    theSession.DeleteUndoMark(markId16, None)
+    
+    markId18 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    componentPositioner5 = workPart.ComponentAssembly.Positioner
+    
+    componentPositioner5.ClearNetwork()
+    
+    componentPositioner5.PrimaryArrangement = arrangement1
+    
+    componentPositioner5.BeginAssemblyConstraints()
+    
+    allowInterpartPositioning5 = theSession.Preferences.Assemblies.InterpartPositioning
+    
+    expression34 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", NXOpen.Unit.Null)
+    
+    expression35 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression36 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit1)
+    
+    expression37 = workPart.Expressions.CreateSystemExpressionWithUnits("0.0", unit2)
+    
+    expression38 = workPart.Expressions.CreateSystemExpressionWithUnits("1", NXOpen.Unit.Null)
+    
+    expression39 = workPart.Expressions.CreateSystemExpressionWithUnits("1.0", unit1)
+    
+    expression40 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression41 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit2)
+    
+    network5 = componentPositioner5.EstablishNetwork()
+    
+    componentNetwork5 = network5
+    componentNetwork5.MoveObjectsState = True
+    
+    componentNetwork5.DisplayComponent = NXOpen.Assemblies.Component.Null
+    
+    componentNetwork5.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    theSession.SetUndoMarkName(markId18, "Assembly Constraints Dialog")
+    
+    componentNetwork5.MoveObjectsState = True
+    
+    componentNetwork5.NetworkArrangementsMode = NXOpen.Positioning.ComponentNetwork.ArrangementsMode.Existing
+    
+    markId19 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Assembly Constraints Update")
+    
+    # ----------------------------------------------
+    #   Dialog Begin Assembly Constraints
+    # ----------------------------------------------
+    scaleAboutPoint60 = NXOpen.Point3d(-19.351416608655207, -4.1977042535043898, 0.0)
+    viewCenter60 = NXOpen.Point3d(19.351416608655054, 4.197704253504341, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint60, viewCenter60)
+    
+    scaleAboutPoint61 = NXOpen.Point3d(-23.664557729130955, -5.1421877105428742, 0.0)
+    viewCenter61 = NXOpen.Point3d(23.664557729130784, 5.1421877105428218, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint61, viewCenter61)
+    
+    scaleAboutPoint62 = NXOpen.Point3d(-26.038884197519362, -6.4277346381785918, 0.0)
+    viewCenter62 = NXOpen.Point3d(26.038884197519213, 6.4277346381785376, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint62, viewCenter62)
+    
+    scaleAboutPoint63 = NXOpen.Point3d(-27.465447752421237, -35.582102461345642, 0.0)
+    viewCenter63 = NXOpen.Point3d(27.465447752421102, 35.582102461345592, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint63, viewCenter63)
+    
+    scaleAboutPoint64 = NXOpen.Point3d(-23.152962523235093, -27.416255905700435, 0.0)
+    viewCenter64 = NXOpen.Point3d(23.152962523234955, 27.416255905700382, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint64, viewCenter64)
+    
+    scaleAboutPoint65 = NXOpen.Point3d(-19.047083050276139, -21.408291692872314, 0.0)
+    viewCenter65 = NXOpen.Point3d(19.047083050275994, 21.408291692872254, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint65, viewCenter65)
+    
+    rotMatrix7 = NXOpen.Matrix3x3()
+    
+    rotMatrix7.Xx = -0.97439724440169639
+    rotMatrix7.Xy = -0.22009453510039359
+    rotMatrix7.Xz = 0.045917379294961772
+    rotMatrix7.Yx = -0.20855745705843476
+    rotMatrix7.Yy = 0.80851956117183588
+    rotMatrix7.Yz = -0.55027257455538825
+    rotMatrix7.Zx = 0.083986887117543013
+    rotMatrix7.Zy = -0.54576049217714351
+    rotMatrix7.Zz = -0.83372158900370297
+    translation7 = NXOpen.Point3d(-61.814946524849319, 48.225082846040806, -101.99079628515601)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix7, translation7, 3.1515242303272215)
+    
+    rotMatrix8 = NXOpen.Matrix3x3()
+    
+    rotMatrix8.Xx = -0.98669454699402703
+    rotMatrix8.Xy = 0.013739206265275571
+    rotMatrix8.Xz = -0.1620034109006559
+    rotMatrix8.Yx = -0.15231567452891537
+    rotMatrix8.Yy = 0.27040025025953535
+    rotMatrix8.Yz = 0.95062276427212367
+    rotMatrix8.Zx = 0.056866565089237445
+    rotMatrix8.Zy = 0.96264995656301533
+    rotMatrix8.Zz = -0.26470975596711804
+    translation8 = NXOpen.Point3d(-52.152678299954729, 26.926901966211226, -37.909987167787136)
+    workPart.ModelingViews.WorkView.SetRotationTranslationScale(rotMatrix8, translation8, 3.1515242303272215)
+    
+    scaleAboutPoint66 = NXOpen.Point3d(-16.413023631202147, -7.8916839965882399, 0.0)
+    viewCenter66 = NXOpen.Point3d(16.413023631202002, 7.8916839965881769, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint66, viewCenter66)
+    
+    scaleAboutPoint67 = NXOpen.Point3d(-20.831107358015498, -8.5003511133463761, 0.0)
+    viewCenter67 = NXOpen.Point3d(20.831107358015348, 8.5003511133463157, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint67, viewCenter67)
+    
+    scaleAboutPoint68 = NXOpen.Point3d(-26.170062455441364, -10.100725859994929, 0.0)
+    viewCenter68 = NXOpen.Point3d(26.170062455441226, 10.100725859994842, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint68, viewCenter68)
+    
+    scaleAboutPoint69 = NXOpen.Point3d(-32.712578069301706, -12.625907324993648, 0.0)
+    viewCenter69 = NXOpen.Point3d(32.712578069301543, 12.625907324993566, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint69, viewCenter69)
+    
+    scaleAboutPoint70 = NXOpen.Point3d(-51.139023986784245, -8.8135392041352034, 0.0)
+    viewCenter70 = NXOpen.Point3d(51.13902398678411, 8.8135392041351199, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint70, viewCenter70)
+    
+    scaleAboutPoint71 = NXOpen.Point3d(-43.370811525465115, -4.0993205600629006, 0.0)
+    viewCenter71 = NXOpen.Point3d(43.370811525465008, 4.0993205600628064, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint71, viewCenter71)
+    
+    scaleAboutPoint72 = NXOpen.Point3d(-47.683296754651252, 1.1806043212980561, 0.0)
+    viewCenter72 = NXOpen.Point3d(47.683296754651124, -1.1806043212981321, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint72, viewCenter72)
+    
+    componentPositioner5.PrimaryArrangement = NXOpen.Assemblies.Arrangement.Null
+    
+    componentPositioner5.EndAssemblyConstraints()
+    
+    theSession.DeleteUndoMark(markId19, None)
+    
+    theSession.UndoToMark(markId18, None)
+    
+    theSession.DeleteUndoMark(markId18, None)
+    
+    theSession.DeleteUndoMark(markId13, None)
+    
+    scaleAboutPoint73 = NXOpen.Point3d(-58.925273458567666, 12.593112760513073, 0.0)
+    viewCenter73 = NXOpen.Point3d(58.925273458567588, -12.59311276051316, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint73, viewCenter73)
+    
+    scaleAboutPoint74 = NXOpen.Point3d(-74.443661370741651, 19.676738688301704, 0.0)
+    viewCenter74 = NXOpen.Point3d(74.443661370741566, -19.676738688301779, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(0.80000000000000004, scaleAboutPoint74, viewCenter74)
+    
+    scaleAboutPoint75 = NXOpen.Point3d(-95.022250582257215, 39.517450199005971, 0.0)
+    viewCenter75 = NXOpen.Point3d(95.022250582257158, -39.517450199006042, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint75, viewCenter75)
+    
+    scaleAboutPoint76 = NXOpen.Point3d(-75.624265692039742, 32.401029706736828, 0.0)
+    viewCenter76 = NXOpen.Point3d(75.624265692039657, -32.401029706736907, 0.0)
+    workPart.ModelingViews.WorkView.ZoomAboutPoint(1.25, scaleAboutPoint76, viewCenter76)
+    
+    # ----------------------------------------------
+    #   Menu: Tools->Journal->Stop Recording
+    # ----------------------------------------------
+    
+if __name__ == '__main__':
+    main()
